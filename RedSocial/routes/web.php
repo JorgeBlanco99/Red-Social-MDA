@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('verify');
+})->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\ProfilesController::class, 'index'])->name('home');
+Route::get('/verify', [App\Http\Controllers\ProfilesController::class, 'index'])->name('verify');
