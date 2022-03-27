@@ -12,15 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('verify');
-})->middleware('auth');
+    return view('auth.login');
+});
 
 Auth::routes();
 
-Route::get('/verify', [App\Http\Controllers\ProfilesController::class, 'index'])->name('verify');
-Route::get('/p/create', 'PostsController@create');
-Route::post('/p', 'PostsController@store');
+Route::get('/p/{post}',  [App\Http\Controllers\PostsController::class, 'show']);
+Route::get('/p/create',  [App\Http\Controllers\PostsController::class, 'create']);
+Route::post('/p',  [App\Http\Controllers\PostsController::class, 'store']);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])->name('profile.show');

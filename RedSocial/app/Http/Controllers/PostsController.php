@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PostsController extends Controller
 {
@@ -22,11 +23,15 @@ class PostsController extends Controller
 
         $imagePath = request('image')->store('uploads', 'public');
 
-        auth()->user()->posts()->create([
+        auth()->user()->User::posts()->create([
             'caption' => $data['caption'],
             'image' => $imagePath
         ]);
 
         dd(request()->all());
+    }
+
+    public function show(\App\Models\Post $post){
+        return view('posts.show',compact('post'));
     }
 }
