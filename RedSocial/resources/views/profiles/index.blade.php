@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-3 p-5">
-            <img src="https://media-exp1.licdn.com/dms/image/C4E0BAQGtjBpGSaaDgA/company-logo_200_200/0/1623056316209?e=2159024400&v=beta&t=kEo-e_UwcMZQvguFL-mhL7EEZ2kMipjp02dvTHH18ws" class="rounded-circle"alt="">
+            <img src="/svg/logoUlpgc.png" class="rounded-circle"alt="">
         </div>
         <div class="col-9 p-5">
             <div class="d-flex justify-content-between align-items-baseline">
@@ -21,15 +21,13 @@
         </div>
 
         <div class="row pt-4 pb-4">
-        <div class="col-4">
-            <img src="/svg/postUlpgc.jpg" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="/svg/postUlpgc.jpg" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="/svg/postUlpgc.jpg" class="w-100">
-        </div>
+        @foreach($user -> posts as $post)
+            <div class="col-4">
+                <a href="/p/{{ $post->id }}">
+                    <img class="w-100" src="/storage/{{$post->image}}" alt="">
+                </a>
+            </div>
+        @endforeach
         </div>
     </div>    
 

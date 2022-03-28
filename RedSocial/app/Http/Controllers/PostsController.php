@@ -5,27 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class PostsController extends Controller
-{
-    public function __construct(){
-        $this->middleware('auth');
-    }
+class PostsController extends Controller{
 
     public function create(){
         return view('posts.create');
     }
 
     public function store(){
+
         $data = request()->validate([
             'caption' => 'required',
-            'image' => ['required', 'image'],
+            'image' => 'required|image',
         ]);
 
-        $imagePath = request('image')->store('uploads', 'public');
+        $imagePath = request('image')->store('uploads','public');
 
-        auth()->user()->User::posts()->create([
+        auth()->user()->posts()->create([
             'caption' => $data['caption'],
-            'image' => $imagePath
+            'image' => $imagePath,
         ]);
 
         return redirect('/profile/' . auth()->user()->id);
