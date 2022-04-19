@@ -8,7 +8,7 @@
         </div>
         <div class="col-4">
             <div>
-            <a href="/profile/{{$post->user_id}}">{{\App\Models\User::find($post->user_id)->username}}</a>
+            <a href="/profile/{{$post->user_id}}" style="font-size: 25px; color:black; text-decoration:none;">{{\App\Models\User::find($post->user_id)->username}}</a>
                 <p>{{$post->caption}} </p>
             </div>
         </div>     

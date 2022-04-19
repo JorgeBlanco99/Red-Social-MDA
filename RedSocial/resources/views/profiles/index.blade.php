@@ -9,12 +9,12 @@
         <div class="col-9 p-5">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{$user -> username}}</h1>
-                <a href="/p/create"> Add new post</a>
+                <a href="/p/create" style="font-size: 15px; color:black;"> Add new post</a>
             </div>
             <div class="d-flex">
-                <div class="pr-6"><strong>3</strong> posts</div>
-                <div class="pr-6"><strong>150</strong> followers</div>
-                <div class="pr-6"><strong>100</strong> following</div>
+                <div class="pr-6" style="padding-right: 24px;"><strong>3</strong> posts</div>
+                <div class="pr-6" style="padding-right: 24px;"><strong>150</strong> followers</div>
+                <div class="pr-6" style="padding-right: 24px;"><strong>100</strong> following</div>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->profile->title}}</div>
             <div>{{$user->profile->description}}</div>
