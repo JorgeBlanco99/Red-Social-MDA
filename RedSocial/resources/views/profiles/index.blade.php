@@ -11,17 +11,16 @@
                 <h1>{{$user -> username}}</h1>
 
                 @can('update', $user->profile)
-                    <a href="/p/create"> Add new post</a>
+                    <a href="/p/create" style="font-size: 15px; color:black;"> Add new post</a>
                 @endcan
-               
             </div>
             @can('update', $user->profile)
                 <a href="/profile/{{ $user->id }}/edit">Edit profile</a>
             @endcan
             <div class="d-flex">
-                <div class="pr-6"><strong>{{$user->posts->count()}}</strong> posts</div>
-                <div class="pr-6"><strong>150</strong> followers</div>
-                <div class="pr-6"><strong>100</strong> following</div>
+                <div class="pr-6" style="padding-right: 24px;"><strong>{{$user->posts->count()}}</strong> posts</div>
+                <div class="pr-6" style="padding-right: 24px;"><strong>150</strong> followers</div>
+                <div class="pr-6" style="padding-right: 24px;"><strong>100</strong> following</div>
             </div>
             <div class="pt-4 font-weight-bold">{{ $user->profile->title}}</div>
             <div>{{$user->profile->description}}</div>

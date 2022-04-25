@@ -23,9 +23,9 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand d-flex" href="{{ url('/') }}">
-                    <div><img src = "/svg/logo.jpg" style="height: 35px; border-right: 1px solid #333; alt="></div>
-                    <div class="pl-3 pt-1">RedSocial</div>
+                <a class="navbar-brand d-flex" href="{{ url('/home') }}">
+                    <div><img src = "/svg/logo.jpg" style="height: 35px; border-right: 1px solid #333;"></div>
+                    <div class="pl-3 pt-1" style="padding-left:12px;">RedSocial</div>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

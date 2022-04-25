@@ -27,7 +27,7 @@
 
             <div class="row">
                 <label for="image" class="col-md-4 col-form-label text-md-end">Posts image</label>
-                <input type="file", class="form-control-file" id="image" name="image">
+                <input type="file", class="form-control-file" style="padding-left: 61px; padding-top:10px;" id="image" name="image">
 
                 @error('image')
                     <strong>{{ $message }}</strong>
