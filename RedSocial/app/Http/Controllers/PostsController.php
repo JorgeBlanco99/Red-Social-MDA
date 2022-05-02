@@ -43,6 +43,7 @@ class PostsController extends Controller{
     }
 
     public function destroy(\App\Models\Post $post){
+        $this->authorize('delete',$post);
         $post->delete();
         $users = auth()->user()->following()->pluck('profiles.user_id');
         $posts = Post::whereIn('user_id',$users)->latest()->get();
