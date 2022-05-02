@@ -8,10 +8,12 @@
         </div>
         <div class="col-9 p-5">
             <div class="d-flex justify-content-between align-items-baseline">
+                @cannot('update', $user->profile)
                 <div>
                     <h1>{{$user -> username}}</h1>
                     <follow-button user-Id="{{ $user->id }}" follows="{{ $follows}}"></follow-button>
                 </div>
+                @endcan
                 @can('update', $user->profile)
                     <a href="/p/create" style="font-size: 15px; color:black;"> Add new post</a>
                 @endcan
