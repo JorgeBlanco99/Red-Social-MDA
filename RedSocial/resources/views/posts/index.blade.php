@@ -1,15 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container" >
+<div class="container" style="display: flex; flex-direction:column; justify-content: center; align-items: center;">
     <div style="padding:16px;">
         <h1>Recent posts!</h1>
     </div>
     @foreach ($posts as $post)
-    <div style="border-width:1px; border-style:solid;">
+    <div style="border-width:1px; border-style:solid; width:500px; margin: 20px; height:500px;">
     <div class="row">
         <div class="col-8 offset-2" style="padding: 16px;">
-            <img src="/storage/{{$post->image}}" class="w-100">
+            <a href="/p/{{ $post->id }}">
+                <img src="/storage/{{$post->image}}"  class="w-100">
+            </a>
         </div>
     </div>
     <div class="row" style="padding: 16px;">

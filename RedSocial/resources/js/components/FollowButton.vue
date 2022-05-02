@@ -22,7 +22,7 @@
                 axios.post('/follow/ '+ this.userId)
                 .then(response=>{
                     this.status =! this.status;
-                    alert(response);
+                    
                 })
                 .catch(errors=>{
                     if(erros.response.status == 401){
