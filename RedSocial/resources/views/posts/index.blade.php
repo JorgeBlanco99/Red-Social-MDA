@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container" >
+    <div style="padding:16px;">
+        <h1>Recent posts!</h1>
+    </div>
     @foreach ($posts as $post)
     <div style="border-width:1px; border-style:solid;">
     <div class="row">
