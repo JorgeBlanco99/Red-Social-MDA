@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['text','post_id'];
     public function post(){
         $this->belongsTo(Post::class);
     }

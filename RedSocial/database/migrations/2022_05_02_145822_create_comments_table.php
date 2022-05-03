@@ -15,8 +15,12 @@ return new class extends Migration
     {
         Schema::create('Comments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->integer('post_id');
             $table->timestamps();
             $table->string('text');
+
+            $table->index('post_id');
         });
     }
 

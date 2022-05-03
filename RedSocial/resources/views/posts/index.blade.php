@@ -9,22 +9,27 @@
         </svg>
     </div>
     @foreach ($posts as $post)
-    <div style="border-width:1px; border-style:solid; width:500px; margin: 20px; height:500px;">
-    <div class="row">
-        <div class="col-8 offset-2" style="padding: 16px;">
-            <a href="/p/{{ $post->id }}">
-                <img src="/storage/{{$post->image}}"  class="w-100">
-            </a>
-        </div>
-    </div>
-    <div class="row" style="padding: 16px;">
-        <div class="col-4">
-            <div>
-            <a href="/profile/{{$post->user_id}}" style="font-size: 25px; color:black; text-decoration:none;">{{\App\Models\User::find($post->user_id)->username}}</a>
-                <p>{{$post->caption}} </p>
+    <div style="border-width:1px; border-style:solid; width:500px; margin: 20px; height:500px; display:flex; flex-direction:column;">
+        <div class="">
+            <div class="" style="display:flex; align-items: center; justify-content:center;">
+                <a href="/p/{{ $post->id }}">
+                    <img src="/storage/{{$post->image}}"  class="" style="width: 400px; height:400px; object-fit: cover;">
+                </a>
             </div>
-        </div>     
-    </div>
+        </div>
+        <div class="" style="padding: 16px;">
+            <div class="">
+                <div style="display: flex; margin-bottom:12px;">
+                    <a href="/profile/{{$post->user_id}}">
+                        <img src="/storage/{{\App\Models\User::find($post->user_id)->profile->image}}" class="rounded-circle"alt="" style="width:40px; height:40px; object-fit:cover; margin-right:12px; border-width:1px; border-style:solid; border-color:black;">
+                    </a>
+                    <a href="/profile/{{$post->user_id}}" style="font-size: 25px; color:black; text-decoration:none;">
+                        {{\App\Models\User::find($post->user_id)->username}}
+                    </a>
+                </div>
+                <p>{{$post->caption}} </p>
+            </div>     
+        </div>
     </div>
     @endforeach
 </div>

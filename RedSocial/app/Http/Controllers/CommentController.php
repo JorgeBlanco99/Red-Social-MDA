@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class CommentController extends Controller
 {
@@ -24,9 +25,18 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Models\Post $post)
     {
-        //
+        $data = request()->validate([
+            'comment' => 'required'
+        ]);
+        auth()->user()->comments()->create([
+            'post_id' => $post->id,
+            'text' => $data['comment'],
+        ]);
+
+
+        return redirect('/p/' . $post->id);
     }
 
     /**

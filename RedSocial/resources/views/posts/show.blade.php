@@ -8,8 +8,15 @@
         </div>
         <div class="col-4">
             <div>
-            <a href="/profile/{{$post->user_id}}" style="font-size: 25px; color:black; text-decoration:none;">{{\App\Models\User::find($post->user_id)->username}}</a>
-                <p>{{$post->caption}} </p>
+            <div style="display: flex; margin-bottom:12px;">
+                <a href="/profile/{{$post->user_id}}">
+                    <img src="/storage/{{\App\Models\User::find($post->user_id)->profile->image}}" class="rounded-circle"alt="" style="width:40px; height:40px; object-fit:cover; margin-right:12px; border-width:1px; border-style:solid; border-color:black;">
+                </a>
+                <a href="/profile/{{$post->user_id}}" style="font-size: 25px; color:black; text-decoration:none;">
+                    {{\App\Models\User::find($post->user_id)->username}}
+                </a>
+            </div>
+                <p>{{$post->caption}}</p>
             </div>
             
             @can('delete', $post)
@@ -33,7 +40,7 @@
             </form>
             @endcan
 
-            <form action="/p/{{$post->id}}" method="post">
+            <form action="/comment/{{$post->id}}" method="post">
                 @csrf
 
                 <div class="">
@@ -67,7 +74,20 @@
                 <div style="margin-left: 12px;">Comment section</div>
             </div>
 
-            
+            @foreach ($post->comments as $comment)
+                <div>
+                    <div style="display:flex;">
+                        <img src="/storage/{{\App\Models\User::find($comment->user_id)->profile->image}}" class="rounded-circle"alt="" style="width:20px; height:20px; object-fit:cover; margin-right:12px; border-width:1px; border-style:solid; border-color:black;">
+                        <a href="/profile/{{$comment->user_id}}" style="font-size: 15px; color:black;">
+                            {{\App\Models\User::find($comment->user_id)->username}}
+                        </a>
+                    </div>
+                    <div style="border-top: 2px;">
+                        {{$comment->text}}
+                    </div>
+                    <div></div>
+                </div>
+            @endforeach
         </div>     
     </div>
 </div>
