@@ -1,0 +1,38 @@
+<template>
+    <div>
+        <button style="border-width: 0px; background-color: white; display:flex;" @click="likeUser"><svg style="margin-right:8px;" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.259 7.15C8.80021 5.65801 6.3996 5.65801 4.94076 7.15C3.52756 8.59532 3.52756 10.9048 4.94076 12.3501L11.9999 19.5697L19.059 12.3501C20.4722 10.9048 20.4722 8.59532 19.059 7.15C17.6002 5.65801 15.1996 5.65801 13.7408 7.15L12.7149 8.19917C12.5268 8.39158 12.269 8.50005 11.9999 8.50005C11.7308 8.50005 11.473 8.39158 11.2849 8.19917L10.259 7.15ZM3.51075 5.75177C5.75411 3.45742 9.4457 3.45742 11.6891 5.75177L11.9999 6.06968L12.3107 5.75177C14.5541 3.45742 18.2457 3.45742 20.4891 5.75177C22.6622 7.97434 22.6622 11.5258 20.4891 13.7483L13.3899 21.0088C12.6273 21.7887 11.3725 21.7887 10.6099 21.0088L3.51075 13.7483C1.33756 11.5258 1.33757 7.97434 3.51075 5.75177Z" 
+            fill="black"/></svg> <div v-text="buttonText"></div></button>
+    </div>
+</template>
+
+<script>
+    export default {
+        props:['postId', 'likes'],
+        mounted() {
+            console.log('Component mounted.')
+        },
+
+        data: function(){
+            return{
+                status: this.likes,
+            }
+        },
+
+        methods: {
+            likeUser(){
+                axios.get('/like/' + this.postId)
+                .then(response=>{
+                    this.status =! this.status;
+                    
+                })
+
+            }
+        },
+        computed: {
+            buttonText(){
+               return (this.status) ? 'Unlike': 'Like' 
+            }
+        }
+    }
+</script>

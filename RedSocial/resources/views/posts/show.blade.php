@@ -16,11 +16,14 @@
                     {{\App\Models\User::find($post->user_id)->username}}
                 </a>
             </div>
+            <div style="display:flex;">
                 <p>{{$post->caption}}</p>
+                <div style="padding-left: 16px;">{{$post->likes->count()}} Me gusta</div>
             </div>
-            
+            </div>
+            <like-button post-Id="{{ $post->id }}"></like-button>
             @can('delete', $post)
-            <form action="/delete/{{ $post->id }}" method="get" style="margin-bottom:16px">
+            <form action="/delete/{{ $post->id }}" method="get" style="margin-bottom:16px; margin-top:16px">
                 @csrf
 
                 <div class="">
