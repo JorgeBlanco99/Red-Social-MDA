@@ -34,6 +34,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
+                    <div class="input-group input-group-sm">
+       <!--  <input class="form-control form-control-navbar" @keyup.enter="searchit" v-model="search" type="search" placeholder="Search" aria-label="Search"> -->
+                <search></search>
+        
+      </div>
 
                     </ul>
 

@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container" style="display: flex; flex-direction:column; justify-content: center; align-items: center;">
+    <search></search>
     <div style="padding:16px;">
         <h1>Recent posts!</h1>
     </div>

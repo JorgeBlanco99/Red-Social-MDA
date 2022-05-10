@@ -6,7 +6,11 @@
 
 require('./bootstrap');
 
+
+
+
 window.Vue = require('vue').default;
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +24,8 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('follow-button', require('./components/FollowButton.vue').default);
+Vue.component('search', require('./components/Search.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +33,4 @@ Vue.component('follow-button', require('./components/FollowButton.vue').default)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+
