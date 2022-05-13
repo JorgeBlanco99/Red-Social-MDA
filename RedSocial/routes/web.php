@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/delete/{post}',  [App\Http\Controllers\PostsController::class, 'destroy']);
 Route::post('/comment/{post}',  [App\Http\Controllers\CommentController::class, 'store']);
 Route::get('/like/{post}',  [App\Http\Controllers\LikesController::class, 'store']);
+Route::get('/dislike/{post}',  [App\Http\Controllers\LikesController::class, 'destroy']);
 
 Route::get('/p/create',  [App\Http\Controllers\PostsController::class, 'create']);
 Route::post('/p',  [App\Http\Controllers\PostsController::class, 'store']);

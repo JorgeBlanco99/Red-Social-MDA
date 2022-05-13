@@ -83,6 +83,8 @@ class LikesController extends Controller
      */
     public function destroy(Like $like)
     {
-        //
+        $likePost = findOrFail($like->id);
+        $likePost->delete();
+        return redirect('/p/' . $post->id);
     }
 }
