@@ -5423,6 +5423,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5431,11 +5437,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     search: function search() {
-      axios.get('/search/finduser?q' + this.name).then(function (response) {})["catch"](function (errors) {
-        if (erros.response.status == 401) {
+      var _this = this;
+
+      axios.get('/findUser?q=' + this.name).then(function (data) {
+        _this.users = data.data;
+      })["catch"](function (errors) {
+        if (errors.response.status == 401) {
           window.location = '/login';
         }
       });
+    },
+    redirect: function redirect(id) {
+      window.location.href = '/profile/' + id;
     }
   }
 });
@@ -28177,6 +28190,38 @@ var render = function () {
         ],
       },
     }),
+    _vm._v(" "),
+    _vm.users
+      ? _c(
+          "div",
+          {
+            staticClass: "panel-footer",
+            staticStyle: {
+              position: "absolute",
+              "z-index": "1000",
+              border: "1px solid #333",
+              background: "#fff",
+              "font-size": "125%",
+              width: "20%",
+            },
+          },
+          _vm._l(_vm.users.data, function (index, n) {
+            return _c("div", { key: index }, [
+              _c("b", [
+                _c(
+                  "a",
+                  {
+                    staticStyle: { "text-decoration": "none" },
+                    attrs: { href: "/profile/" + _vm.users.data[n].id },
+                  },
+                  [_vm._v(_vm._s(_vm.users.data[n].name))]
+                ),
+              ]),
+            ])
+          }),
+          0
+        )
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

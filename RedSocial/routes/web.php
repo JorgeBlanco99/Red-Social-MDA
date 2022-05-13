@@ -32,4 +32,4 @@ Route::get('/profile/{user}', [App\Http\Controllers\ProfilesController::class, '
 Route::get('/profile/{user}/edit', [App\Http\Controllers\ProfilesController::class, 'edit'])->name('profile.edit');
 Route::patch('/profile/{user}', [App\Http\Controllers\ProfilesController::class, 'update'])->name('profile.update');
 
-Route::patch('/search', [App\Http\Controllers\SearchController::class, 'search']);
+Route::get('/findUser', [App\Http\Controllers\SearchController::class, 'search']);
