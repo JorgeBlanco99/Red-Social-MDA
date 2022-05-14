@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->index('post_id');
+            $table->index('user_id');
         });
     }
 

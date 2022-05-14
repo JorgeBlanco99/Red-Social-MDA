@@ -5439,9 +5439,23 @@ __webpack_require__.r(__webpack_exports__);
     likeUser: function likeUser() {
       var _this = this;
 
-      axios.get('/like/' + this.postId).then(function (response) {
-        _this.status = !_this.status;
-      });
+      if (this.status) {
+        axios.get('/like/' + this.postId).then(function (response) {
+          _this.status = !_this.status;
+        })["catch"](function (errors) {
+          if (erros.response.status == 401) {
+            window.location = '/login';
+          }
+        });
+      } else {
+        axios.get('/dislike/' + this.postId).then(function (response) {
+          _this.status = !_this.status;
+        })["catch"](function (errors) {
+          if (erros.response.status == 401) {
+            window.location = '/login';
+          }
+        });
+      }
     }
   },
   computed: {

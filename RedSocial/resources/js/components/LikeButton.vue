@@ -21,11 +21,27 @@
 
         methods: {
             likeUser(){
-                axios.get('/like/' + this.postId)
-                .then(response=>{
-                    this.status =! this.status;
-                    
-                })
+                if(this.status){
+                    axios.get('/like/' + this.postId)
+                    .then(response=>{
+                        this.status =! this.status;
+                        
+                    }).catch(errors=>{
+                    if(erros.response.status == 401){
+                        window.location = '/login';
+                    }
+                });
+                } else {
+                    axios.get('/dislike/' + this.postId)
+                    .then(response=>{
+                        this.status =! this.status;
+                        
+                    }).catch(errors=>{
+                    if(erros.response.status == 401){
+                        window.location = '/login';
+                    }
+                });
+                }
 
             }
         },

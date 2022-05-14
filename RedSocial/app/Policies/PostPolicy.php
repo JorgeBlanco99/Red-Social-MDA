@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Like;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
@@ -66,6 +67,11 @@ class PostPolicy
     public function delete(User $user, Post $post)
     {
         return $user->id == $post->user_id;
+    }
+
+    public function like(User $user, Post $post)
+    {
+        return Like::where('user_id','=',auth()->user()->id)->where('post_id','=',$post->id)->get()->count() != 0;  
     }
 
     /**
