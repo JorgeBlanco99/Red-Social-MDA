@@ -1,7 +1,7 @@
 <template>
     <div>
-        <input type = "text"  v-model="name" @input="search" @focus="modal = true" @blur="modal = false">
-        <div class="panel-footer" v-if="users && modal" style="position:absolute;
+        <input type = "text"  v-model="name" @input="search">
+        <div class="panel-footer" v-if="users" style="position:absolute;
         z-index:1000; border:1px solid #333; background:#fff; font-size:125%; width: 20%;">
             <div v-for="(index,n) in users.data" :key="index">
                 <b><a :href="'/profile/'+ users.data[n].id" style="text-decoration:none; ">{{users.data[n].name}}</a></b>
@@ -14,16 +14,12 @@
     export default {
     data: function(){
             return{
-                name:'',
-                modal: false,
+                name:''
             }
         },
         methods: {
             search(){
-                if(this.name.length == 0){
-                    this.users = '';
-                }else {
-                     axios.get('/findUser?q='+this.name)
+                axios.get('/findUser?q='+this.name)
                 .then((data)=> {
                     this.users=data.data
 
@@ -33,13 +29,11 @@
                         window.location = '/login';
                     }
                 });
-                }
-               
             },
             redirect(id){
                 window.location.href = '/profile/'+id;
-                this.modal = false;
             }
+
         }    
     }
 </script>

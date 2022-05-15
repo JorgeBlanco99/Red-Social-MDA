@@ -5432,29 +5432,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      name: '',
-      modal: false
+      name: ''
     };
   },
   methods: {
     search: function search() {
       var _this = this;
 
-      if (this.name.length == 0) {
-        this.users = '';
-      } else {
-        axios.get('/findUser?q=' + this.name).then(function (data) {
-          _this.users = data.data;
-        })["catch"](function (errors) {
-          if (errors.response.status == 401) {
-            window.location = '/login';
-          }
-        });
-      }
+      axios.get('/findUser?q=' + this.name).then(function (data) {
+        _this.users = data.data;
+      })["catch"](function (errors) {
+        if (errors.response.status == 401) {
+          window.location = '/login';
+        }
+      });
     },
     redirect: function redirect(id) {
       window.location.href = '/profile/' + id;
-      this.modal = false;
     }
   }
 });
@@ -28194,16 +28188,10 @@ var render = function () {
           },
           _vm.search,
         ],
-        focus: function ($event) {
-          _vm.modal = true
-        },
-        blur: function ($event) {
-          _vm.modal = false
-        },
       },
     }),
     _vm._v(" "),
-    _vm.users && _vm.modal
+    _vm.users
       ? _c(
           "div",
           {
