@@ -28216,6 +28216,11 @@ var render = function () {
               "font-size": "125%",
               width: "20%",
             },
+            on: {
+              focus: function ($event) {
+                _vm.modal = true
+              },
+            },
           },
           _vm._l(_vm.users.data, function (index, n) {
             return _c("div", { key: index }, [
@@ -28225,6 +28230,11 @@ var render = function () {
                   {
                     staticStyle: { "text-decoration": "none" },
                     attrs: { href: "/profile/" + _vm.users.data[n].id },
+                    on: {
+                      blur: function ($event) {
+                        _vm.modal = false
+                      },
+                    },
                   },
                   [_vm._v(_vm._s(_vm.users.data[n].name))]
                 ),
