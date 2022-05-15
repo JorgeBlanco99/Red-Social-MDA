@@ -5442,6 +5442,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.name.length == 0) {
         this.users = '';
+        modal = false;
       } else {
         axios.get('/findUser?q=' + this.name).then(function (data) {
           _this.users = data.data;
@@ -5455,6 +5456,13 @@ __webpack_require__.r(__webpack_exports__);
     redirect: function redirect(id) {
       window.location.href = '/profile/' + id;
       this.modal = false;
+    },
+    inactivate: function inactivate() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        return _this2.modal = false;
+      }, 250);
     }
   }
 });
@@ -28197,6 +28205,7 @@ var render = function () {
         focus: function ($event) {
           _vm.modal = true
         },
+        blur: _vm.inactivate,
       },
     }),
     _vm._v(" "),
@@ -28220,8 +28229,11 @@ var render = function () {
                 _c(
                   "a",
                   {
-                    staticStyle: { "text-decoration": "none" },
-                    attrs: { href: "/profile/" + _vm.users.data[n].id },
+                    on: {
+                      click: function ($event) {
+                        return _vm.redirect(_vm.users.data[n].id)
+                      },
+                    },
                   },
                   [_vm._v(_vm._s(_vm.users.data[n].name))]
                 ),
