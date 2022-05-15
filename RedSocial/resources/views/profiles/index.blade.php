@@ -40,6 +40,7 @@
             <div>{{$user->profile->description}}</div>
         </div>
 
+        @can('view', $user->profile)
         <div class="row pt-4 pb-4">
         @foreach($user -> posts as $post)
             <div class="col-4 pb-4">
@@ -49,6 +50,12 @@
             </div>
         @endforeach
         </div>
+        @endcan
+        @cannot('view', $user->profile)
+        <div style="display: flex; width: 100%; justify-content:center">
+            Private profile, follow it to see the post
+        </div>
+        @endcan
     </div>    
 
 

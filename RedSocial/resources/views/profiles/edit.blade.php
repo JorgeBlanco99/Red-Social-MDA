@@ -46,6 +46,12 @@
                 </div>
             </div>
 
+            <div class="" style="display: flex; justify-content: center;">
+                <input type="checkbox", class="" id="privacy" name="privacy"
+                checked>
+                <label style="margin-left: 12px;">Private profile</label>
+            </div>
+
             <div class="row">
                 <label for="image" class="col-md-4 col-form-label text-md-end">Profile image</label>
                 <input type="file", class="form-control-file" id="image" name="image">
