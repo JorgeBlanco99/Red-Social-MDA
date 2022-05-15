@@ -30,7 +30,18 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile)
     {
-        //
+        if($profile->privacy == null){
+            return true;
+        }
+
+        if($profile->user()->find($user->id) == !null){
+            return true;
+        }
+
+        if($user->following()->find($profile->id) != null){
+            return true;
+        }
+        return false;
     }
 
     /**
